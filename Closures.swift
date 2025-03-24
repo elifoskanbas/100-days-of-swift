@@ -67,3 +67,85 @@ func travel(action: () -> Void) {
 }
 
 travel(action: driving2)
+
+
+
+
+
+
+func getUserData(for id: Int) -> String {
+    if id == 1989 {
+        return "Taylor Swift"
+    } else {
+        return "Anonymous"
+    }
+}
+
+let data: (Int) -> String = getUserData
+let user = data(1989)
+print(user)
+
+
+
+
+
+let team = ["Gloria", "Suzanne", "Piper", "Tiffany", "Tasha"]
+
+
+let captainFirstTeam = team.sorted(by: { (name1: String, name2: String) -> Bool in
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+
+    return name1 < name2
+})
+//equals to :
+func captainFirstSorted(name1: String, name2: String) -> Bool {
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+
+    return name1 < name2
+}
+//equals to :
+let captainFirstTeam2 = team.sorted { name1, name2 in
+    if name1 == "Suzanne" {
+        return true
+    } else if name2 == "Suzanne" {
+        return false
+    }
+
+    return name1 < name2
+}
+
+//equals to:
+let captainFirstTeam = team.sorted {
+    if $0 == "Suzanne" {
+        return true
+    } else if $1 == "Suzanne" {
+        return false
+    }
+
+    return $0 < $1
+}
+
+
+
+/////////////////////////////////////
+
+
+func makeArray(size: Int, using generator: () -> Int) -> [Int] {
+    var numbers = [Int]()
+
+    for _ in 0..<size {
+        let newNumber = generator()
+        numbers.append(newNumber)
+    }
+
+    return numbers
+}
+
